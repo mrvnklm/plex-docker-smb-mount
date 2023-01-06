@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+SMB_SERVER="127.0.0.1"
+SMB_SHARE="MyMedia"
+SMB_USERNAME="MyUsername"
+SMB_PASSWORD="MyPassword"
+
+if [ $(dpkg-query -W -f='${Status}' cifs-utils 2>/dev/null | grep -c "cifs-utils installed") -eq 0 ];
+then
+  apt update
+  apt install -y cifs-utils
+  rm -rf /var/lib/apt/lists/*
+fi
+
+mkdir -p /mnt/$SMB_SHARE
+mount -v -t cifs //$SMB_SERVER/$SMB_SHARE /mnt/$SMB_SHARE$ -o username=$SMB_USERNAME,password=$SMB_PASSWORD
