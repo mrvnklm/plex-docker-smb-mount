@@ -3,7 +3,7 @@ simple solution to mount smb network share in plex docker container
 
 ## Usage with Home Assistant OS
 We are going to use [linuxserver/plex](https://hub.docker.com/r/linuxserver/plex) as we can not modify the official plex addon docker container. Please make sure to stop or delete the official addon before.
-1. clone this repository in your Home Assistant `share` directory to a folder called `plex`
+1. clone this repository in your Home Assistant `share` directory to a folder called `plex` and create the `config` folder inside
 2. open `init-smb-mount\run` with a text editor and update the variables according to your samba server (use the server IP instead of the hostname in order to prevent DNS issues)
 3. run the docker container via the offical Home Assistant SSH addon by using the following command:
 ```
