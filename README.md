@@ -29,6 +29,7 @@ docker run -d \
 -e WATCHTOWER_CLEANUP=1 \
 -e WATCHTOWER_LABEL_ENABLE=1 \
 -e WATCHTOWER_SCHEDULE="0 0 4 * * *" \
+--label=com.centurylinklabs.watchtower.enable=true \
 -v /var/run/docker.sock:/var/run/docker.sock \
 containrrr/watchtower
 ```
