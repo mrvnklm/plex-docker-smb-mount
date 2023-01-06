@@ -26,10 +26,10 @@ the plex docker container can be updated or recreated without any problems, for 
 docker run -d \
 --name watchtower \
 --restart=unless-stopped \
+--label=com.centurylinklabs.watchtower.enable=true \
 -e WATCHTOWER_CLEANUP=1 \
 -e WATCHTOWER_LABEL_ENABLE=1 \
 -e WATCHTOWER_SCHEDULE="0 0 4 * * *" \
---label=com.centurylinklabs.watchtower.enable=true \
 -v /var/run/docker.sock:/var/run/docker.sock \
 containrrr/watchtower
 ```
