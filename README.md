@@ -35,7 +35,7 @@ containrrr/watchtower
 ## Notes
 Home Assistant will detect, that you run external docker containers and "You are running an unsupported installation" will show up. You can just ignore that.
 - the `--privileged` is required for mounting 
-- using `--label=com.centurylinklabs.watchtower.enable=true` together with `-e WATCHTOWER_LABEL_ENABLE=1` makes sure, that watchtower will not interfere with and of the Home Assistant containers
+- using `--label=com.centurylinklabs.watchtower.enable=true` together with `-e WATCHTOWER_LABEL_ENABLE=1` makes sure, that watchtower will not interfere with any of the Home Assistant containers
 
 ## Usage with other OS
 just update the hosts mount points according to your configuration
