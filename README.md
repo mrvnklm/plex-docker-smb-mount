@@ -28,6 +28,7 @@ docker run -d \
 --restart=unless-stopped \
 -e WATCHTOWER_CLEANUP=1 \
 -e WATCHTOWER_LABEL_ENABLE=1 \
+-e WATCHTOWER_SCHEDULE="0 0 4 * * *" \
 -v /var/run/docker.sock:/var/run/docker.sock \
 containrrr/watchtower
 ```
@@ -36,6 +37,7 @@ containrrr/watchtower
 Home Assistant will detect, that you run external docker containers and "You are running an unsupported installation" will show up. You can just ignore that.
 - the `--privileged` is required for mounting 
 - using `--label=com.centurylinklabs.watchtower.enable=true` together with `-e WATCHTOWER_LABEL_ENABLE=1` makes sure, that watchtower will not interfere with any of the Home Assistant containers
+- checking for updates every night at 04:00 is done by using the following cron expression `-e WATCHTOWER_SCHEDULE="0 0 4 * * *"`
 
 ## Usage with other OS
 just update the hosts mount points according to your configuration
