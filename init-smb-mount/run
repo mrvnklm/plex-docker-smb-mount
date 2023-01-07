@@ -13,4 +13,4 @@ then
 fi
 
 mkdir -p /mnt/$SMB_SHARE
-mount -v -t cifs //$SMB_SERVER/$SMB_SHARE /mnt/$SMB_SHARE$ -o username=$SMB_USERNAME,password=$SMB_PASSWORD
+mount -v -t cifs //$SMB_SERVER/$SMB_SHARE /mnt/$SMB_SHARE -o username=$SMB_USERNAME,password=$SMB_PASSWORD
