@@ -23,19 +23,22 @@ lscr.io/linuxserver/plex:latest
 ## Updating
 the plex docker container can be updated or recreated without any problems, for automatic updating consider using [watchtower](https://containrrr.dev/watchtower/)
 ```
+docker pull containrrr/watchtower:latest
+docker tag containrrr/watchtower:latest watchtowr
+docker rmi containrrr/watchtower:latest
+
 docker run -d \
 --name watchtower \
 --restart=unless-stopped \
---label=com.centurylinklabs.watchtower.enable=true \
 -e WATCHTOWER_CLEANUP=1 \
 -e WATCHTOWER_LABEL_ENABLE=1 \
 -e WATCHTOWER_SCHEDULE="0 0 5 * * *" \
 -v /var/run/docker.sock:/var/run/docker.sock \
-containrrr/watchtower
+watchtowr
 ```
 
 ## Notes
-Home Assistant will detect, that you run external docker containers and "You are running an unsupported installation" will show up. You can just ignore that.
+- Home Assistant detects watchtower and marks the system as unhealthy. Therefor we just rename the image and prevent the supervisor to have any issues
 - the `--privileged` is required for mounting 
 - using `--label=com.centurylinklabs.watchtower.enable=true` together with `-e WATCHTOWER_LABEL_ENABLE=1` makes sure, that watchtower will not interfere with any of the Home Assistant containers
 - checking for updates every night at 05:00 is done by using the following cron expression `-e WATCHTOWER_SCHEDULE="0 0 5 * * *"`
