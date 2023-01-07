@@ -28,7 +28,7 @@ docker tag containrrr/watchtower:latest watchtowr
 docker rmi containrrr/watchtower:latest
 
 docker run -d \
---name watchtower \
+--name watchtowr \
 --restart=unless-stopped \
 -e WATCHTOWER_CLEANUP=1 \
 -e WATCHTOWER_LABEL_ENABLE=1 \
